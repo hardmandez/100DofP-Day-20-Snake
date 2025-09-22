@@ -1,21 +1,19 @@
-import time
-import math
 from turtle import Screen, Turtle
 from snake import Snake
 from food import Food
 from score import Score
+import pygame
 
 my_snake = Snake()
 food = Food()
 score = Score()
+
 
 #Define screen.
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Grub")
-# turtle.goto(0, 295)
-# turtle.write(str("Score"), align="center", font=("Arial", 10, "bold"))
 screen.tracer(0)
 
 
@@ -34,6 +32,10 @@ def game_loop():
 
     #Check for food collision.
     if abs(snake_position[0] - food_position[0]) <= 15 and abs(snake_position[1] - food_position[1]) <= 15:
+        pygame.mixer.init()
+        pygame.mixer.music.load("apple-crunch.wav")
+        pygame.mixer.music.play()
+
         my_snake.addsegment()
         food.food_counter = 0
         score.score += 1

@@ -1,5 +1,5 @@
 from turtle import Screen, Turtle
-import math
+import winsound
 
 class Snake():
     def __init__(self):
@@ -28,6 +28,7 @@ class Snake():
                 new_x = self.segment[seg_no - 1].xcor()
                 new_y = self.segment[seg_no - 1].ycor()
                 self.segment[seg_no].goto(new_x, new_y)
+            # winsound.Beep(50, 25)
             self.segment[0].forward(20)
 
     def movesnakeleft(self):
